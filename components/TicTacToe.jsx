@@ -1,7 +1,7 @@
 import React from 'react';
 import GameBoard from './GameBoard';
 
-
+//Individual game
 class TicTacToe extends React.Component {
 
     constructor(props) {
@@ -56,7 +56,7 @@ class TicTacToe extends React.Component {
             this.setState({gameOver: true, winner: winner});
         }
 
-        // Check if there's a tie
+        // Check if it's a draw
         if (this.checkDraw()) {
             var winner = "It's a draw!";
             this.setState({gameOver: 'draw', winner: winner});
@@ -127,10 +127,10 @@ class TicTacToe extends React.Component {
             }
             rows.push(columns);
         }
-
+		
 		gridClasses += this.state.turn.toLowerCase().replace(/ /g,"") + '-turn';
 
-
+		//Add status + classes game is over
       	if(this.state.gameOver && this.state.winner){
         	gridClasses += " gameOver";
         	stateMessage = this.state.winner;

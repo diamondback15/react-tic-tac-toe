@@ -1,30 +1,60 @@
 *{
 	font-family: Arial;
-	
+	padding-top: 50px;
+    padding-bottom: 20px;
+    background: #eee;
 }
 
-.rTableCell {
-    width: 100px;
-    height: 100px;
-    display: table-cell;
+.rTableBody {
+  display: table-row-group;
 }
 
+.rTableRow{
+	display: table-row;
+	&:last-of-type .rTableCell{
+		border-bottom: 0px;
+	}
+}
+
+.rTable {
+  display: table;
+  width: 100%;
+  position: relative;
+}
 
 .rTableCell{
-    border-right: 2px solid rgba(0,0,0,0.1);
-    border-bottom: 2px solid rgba(0,0,0,0.1);
+    width: 100px;
+	height: 100px;
+	position: relative;
+	display: table-cell;
+	border-right: 2px solid rgba(0,0,0,0.1);
+	border-bottom: 2px solid rgba(0,0,0,0.1);
+	img{
+		width: 100%;
+		max-width: 70px;
+		height: auto;
+		margin: 0 auto;
+	}
+	&:last-of-type{
+		border-right: 0px;
+	}
 }
 
-.rTableCell:last-of-type{
-	border-right: 0px;
+#rGameBoard{
+	width: auto;
+	margin: 0 auto;
 }
 
-.rTableRow:last-of-type .rTableCell{
-	border-bottom: 0px;
+.GameBoard{
+	background: #db413f;
+	border-radius: 4px;
+	box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+	display: inline-block;
 }
 
-body{
-	background: #eee;
+.ticTacToeContainer{
+	text-align: center;
+	margin-bottom: 100px;
 }
 
 .checkedCell{
@@ -35,21 +65,12 @@ body{
 	left: 0;
 	right: 0;
 	text-align: center;
-	
 }
 
-.ticTacToeContainer{
-	text-align: center;
-	margin-bottom: 100px;
-}
 
 .freeCell {
     width: 80px;
     height: 80px;
-}
-
-.ownedByx {
-	
 }
 
 .gameOver{
@@ -119,10 +140,7 @@ body{
 }
 
 
-#rGameBoard{
-	width: auto;
-	margin: 0 auto;
-}
+
 
 .blink {
   animation: blink-animation 1s steps(5, start) infinite;
@@ -138,12 +156,6 @@ body{
     visibility: hidden;
   }
 }
-
-/*
-.o-turn .ownedByx img, .x-turn .ownedByo img{
-	opacity: 0.3;
-}
-*/
 
 .title_board{
 	font-size: 30px;
@@ -168,9 +180,6 @@ body{
 	
 }
 
-.ownedByY {
-}
-
 .emptyCell{
 	background: transparent;
 	display: block;
@@ -179,60 +188,29 @@ body{
 	border: none;
 	position: absolute;
 	cursor: pointer;
+	&:focus, &:hover{
+		outline: none;
+		border-radius: 100px;	
+	}
+	&:hover:before{
+		transform: scale(1);
+	}
+	
+	&:before{
+		content: "";
+		height: 10px;
+		width: 10px;
+		border-radius: 100px;
+		background: rgba(0,0,0,0.1);
+		position: absolute;
+		top: 50%;
+		transform: translate(0,-50%);
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		transform: scale(0);
+		transition: all 0.2s;
+	}
 }
 
-.emptyCell:focus, .emptyCell:hover{
-	outline: none;
-	border-radius: 100px;
-}
-
-.emptyCell:before{
-	content: "";
-	height: 10px;
-	width: 10px;
-	border-radius: 100px;
-	background: rgba(0,0,0,0.1);
-	position: absolute;
-	top: 50%;
-	transform: translate(0,-50%);
-	left: 0;
-  right: 0;
-  margin: 0 auto;
-  transform: scale(0);
-  transition: all 0.2s;
-}
-
-.emptyCell:hover:before{
-	transform: scale(1);
-}
-
-.GameBoard{
-	background: #db413f;
-	border-radius: 4px;
-	box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
-	display: inline-block;
-}
-
-.rTable {
-  display: table;
-  width: 100%;
-  position: relative;
-}
-.rTableRow {
-  display: table-row;
-}
-.rTableCell{
-	position: relative;
-}
-
-.rTableCell img{
-	width: 100%;
-	max-width: 70px;
-	height: auto;
-	margin: 0 auto;
-}
-
-.rTableBody {
-  display: table-row-group;
-}
 
