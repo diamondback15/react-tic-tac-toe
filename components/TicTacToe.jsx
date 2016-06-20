@@ -46,18 +46,20 @@ class TicTacToe extends React.Component {
 			return false;
 		}
 				
+		var winner = false;
+				
 		//Set cell owner
 		var board = this.state.board;
         board["c" +x + y].owner = this.state.turn;
         
         // Check for winners
         if (this.checkWinner(x, y, this.state.turn)) {
-            var winner = this.state.turn + " wins!";
+            winner = this.state.turn + " wins!";
             this.setState({gameOver: true, winner: winner});
         }
 
         // Check if it's a draw
-        if (this.checkDraw()) {
+        if (this.checkDraw() && winner == false) {
             var winner = "It's a draw!";
             this.setState({gameOver: 'draw', winner: winner});
         }
@@ -109,8 +111,10 @@ class TicTacToe extends React.Component {
     checkDraw() {
         var counter = this.state.counter + 1;
         this.setState({counter: counter});
-		console.log(counter >= Math.pow(this.props.size, 2));
+
         return (counter >= Math.pow(this.props.size, 2));
+ 
+        
     }
 
     render() {

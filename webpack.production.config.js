@@ -15,5 +15,8 @@ module.exports = {
 	},
 	module: {
 		loaders: loaders
-	}
+	},
+	plugins: [
+      new webpack.optimize.UglifyJsPlugin({minimize: true})
+    ]
 };
